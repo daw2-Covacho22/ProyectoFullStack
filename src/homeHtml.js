@@ -1,5 +1,5 @@
 const homeHtml = ()=>{
-    mainUI.innerHTML = 'cargando...'
+    cargando()
     tituloPaginaHtml('Las recetas de <br>Paco Cinero')
     mainUI.innerHTML = `
     <div class="container-fluid">

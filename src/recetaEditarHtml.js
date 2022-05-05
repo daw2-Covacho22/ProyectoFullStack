@@ -1,16 +1,7 @@
  //HTML de editar
 const recetaEditarHtml = (id)=>{
     //console.log(id)
-    let migaUrl = [
-        {
-            nombre:'home',
-            function: 'homeHtml()'
-        },
-        {
-            nombre:'recetasEditar',
-            funcion:'recetaEditarHtml()'
-        }
-    ]
+
 
     /*var opciones = (dificultad)=>{
         if(dificultad==easy){
@@ -40,8 +31,6 @@ const recetaEditarHtml = (id)=>{
     })
     .then(dato=>dato.json())
     .then(receta=>{
-        migaUrl.push({nombre:receta.title,funcion:''})
-        //console.log("migaUrl: " ,migaUrl)
         //console.log(id)
         var dificultad = `${receta.dificulty}`
         tituloPaginaHtml(`<em class="fs-5">${receta.title}</em>`)

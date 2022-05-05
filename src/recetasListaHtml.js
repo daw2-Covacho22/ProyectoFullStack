@@ -21,16 +21,7 @@ const recetasListaHtml = ()=>{
     }
 
 
-    var migaUrl = [
-        {
-            nombre: 'home',
-            function: 'homeHtml()'
-        },
-        {
-            nombre:'recetas', 
-            funcion:'recetasListaHtml()'
-        }
-    ]
+
     tituloPaginaHtml('Lista de Recetas')
     var listaHtml =
     `

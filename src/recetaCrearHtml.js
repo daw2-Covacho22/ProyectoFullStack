@@ -1,15 +1,6 @@
 //HTML de editar
 const recetaCrearHtml = ()=>{
-    let migaUrl = [
-        {
-            nombre:'home',
-            function: 'homeHtml()'
-        },
-        {
-            nombre:'recetaCrear',
-            funcion:'recetaCrearHtml()'
-        }
-    ]
+
 
     
     mainUI.innerHTML = 'cargando...'

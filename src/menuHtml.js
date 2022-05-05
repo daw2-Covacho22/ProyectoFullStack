@@ -1,5 +1,5 @@
 const menuHtml = () => {
-  let html = ` 
+    menuUI.innerHTML = ` 
   <nav class="navbar navbar-light bg-light" aria-label="First navbar example">
                 <div class="container-fluid">
                     <a class="navbar-brand" style="color: black;" href="./index.html">¡Paco!</a>
@@ -53,7 +53,6 @@ const menuHtml = () => {
                 </div>
             </nav>
   `
-  menuUI.innerHTML = html;
 
   menuUI.addEventListener('click', (element)=>{
       console.log(localStorage.user)
