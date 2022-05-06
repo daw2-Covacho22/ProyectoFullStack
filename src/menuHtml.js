@@ -6,6 +6,11 @@ const menuHtml = () => {
                         Login
                     </a>`
         }
+        var logperson = ()=>{
+            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
+                        Login
+                    </a>`
+        }
         
     }else{
         userlog = ()=>{
@@ -14,14 +19,6 @@ const menuHtml = () => {
                         ${username}
                     </a>`
         }
-    }
-    if(localStorage.user == '' || localStorage.user == null){
-        var logperson = ()=>{
-            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
-                        Login
-                    </a>`
-        }
-    }else{
         logperson = ()=>{
             
             return `<a class="nav-link active" style="color: black;" aria-current="page" href="#">
@@ -31,9 +28,8 @@ const menuHtml = () => {
                         cerrar sesion
                     </a>`
         }
-    }if(username == 'admin'){
-        userslista()
     }
+    
     menuUI.innerHTML = ` 
     <nav class="navbar navbar-light bg-light" aria-label="First navbar example">
                 <div class="container-fluid">
@@ -60,11 +56,12 @@ const menuHtml = () => {
                                     <li><a class="dropdown-item" data-function="recetaCrearHtml()">Añadir receta</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" style="color: black;" href="#" id="dropdown01"
-                                    data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                                ${userslista()}
+                            <li class="nav-item dropdown menuUsuarios">
+                                <a class="nav-link dropdown-toggle" style="color: black;" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Usuarios
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown01" id='lista_usuarios'>
+                                    <li><a class="dropdown-item"></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -94,22 +91,17 @@ const menuHtml = () => {
     //console.log(localStorage.user)
     if(element.target.dataset.function == 'recetasListaHtml()'){
         recetasListaHtml();
-    }
-    if(element.target.dataset.function == 'loginHtml()'){
+    } else if(element.target.dataset.function == 'loginHtml()'){
         loginHtml();
-    }
-    if(element.target.dataset.function == 'recetaCrearHtml()'){
+    }else if(element.target.dataset.function == 'recetaCrearHtml()'){
         if(localStorage.user == '' || localStorage.user == null){
             alert('No tienes acceso')
         }else{
-            if(JSON.parse(localStorage.getItem('user')).username == 'admin'){
+            if(username == 'admin'){
                 recetaCrearHtml();
             }
-            
         }
-        
-    }
-    if(element.target.dataset.function == 'logout()'){
+    }else if(element.target.dataset.function == 'logout()'){
         loginHtml();
         logout();
     }

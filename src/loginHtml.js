@@ -62,6 +62,9 @@ const login = () => {
                 document.querySelector('#user').innerHTML = log;
                 document.querySelector('#token').innerHTML = token;
                 menuHtml()
+                if(username=='admin'){
+                    userslista()
+                }
 
             })
             .catch(err => console.log(err));
@@ -100,7 +103,8 @@ const logout = () => {
 }
 
 const userslista = () => {
-    if(username == 'admin'){
+        //dropdown-toggle
+        
           fetch(`${urlApi}/users`, {
             method: 'GET',
             redirect: 'follow',
@@ -111,16 +115,17 @@ const userslista = () => {
             .then(response => response.json())
             .then(result => {
                 result.forEach(usuarios=>{
-                    return`<li><a class="dropdown-item">${usuarios.username}</a></li>`
                     console.log(usuarios.username)
+                    var usuariosLista = document.getElementById('lista_usuarios')
+                    console.log(usuariosLista)
+                    usuariosLista.innerHTML += `<li><a class="dropdown-item">${usuarios.username}</a></li>`
+                    
+                    
                 })
                 
             })
-
             .catch(error => console.log('error', error));
-    }else{
-        console.log('usuario mal')
-    }
+        menuHtml()
 }
 
 

@@ -29,5 +29,4 @@ const cargando = ()=> {return `<div class="spiner-border d-flex justify-content-
 //aparece como si la sesión estuviese cerrada
 if(username == '' || username == null){
     localStorage.clear()
-    console.log('hola')
 }
