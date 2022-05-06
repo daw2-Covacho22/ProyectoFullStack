@@ -99,6 +99,30 @@ const logout = () => {
     .catch(err => console.log(err));*/
 }
 
+const userslista = () => {
+    if(username == 'admin'){
+          fetch(`${urlApi}/users`, {
+            method: 'GET',
+            redirect: 'follow',
+            headers:{
+                Authorization: 'Bearer ' + token
+            }
+          })
+            .then(response => response.json())
+            .then(result => {
+                result.forEach(usuarios=>{
+                    return`<li><a class="dropdown-item">${usuarios.username}</a></li>`
+                    console.log(usuarios.username)
+                })
+                
+            })
+
+            .catch(error => console.log('error', error));
+    }else{
+        console.log('usuario mal')
+    }
+}
+
 
 //Eventos
 mainUI.addEventListener('click', (elemento) => {

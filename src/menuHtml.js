@@ -24,13 +24,15 @@ const menuHtml = () => {
     }else{
         logperson = ()=>{
             
-            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
+            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#">
                         Hola ${username}
                     </a>
                     <a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="logout()">
                         cerrar sesion
                     </a>`
         }
+    }if(username == 'admin'){
+        userslista()
     }
     menuUI.innerHTML = ` 
     <nav class="navbar navbar-light bg-light" aria-label="First navbar example">
@@ -62,7 +64,7 @@ const menuHtml = () => {
                                 <a class="nav-link dropdown-toggle" style="color: black;" href="#" id="dropdown01"
                                     data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                                
+                                ${userslista()}
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -110,9 +112,6 @@ const menuHtml = () => {
     if(element.target.dataset.function == 'logout()'){
         loginHtml();
         logout();
-    }
-    if(element.target.dataset.function == 'loginHtml()'){
-        loginHtml()
     }
 })
 
