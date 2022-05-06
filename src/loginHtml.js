@@ -20,7 +20,9 @@ const loginHtml = () => {
 }
 
 
-const login = () => {
+
+
+const login = (useradd, passadd) => {
     //console.log(user)
     token = localStorage.getItem('token');
     user = {
@@ -28,9 +30,9 @@ const login = () => {
         "email": "admin@admin.com",
         "password": "$2b$10$oN1K03f5kjqa23HGei5vZ.1OjB5frIw7vw8F0KuvT1LUobUMVLLIG"
     };
-    var contrasenya = document.getElementById('password').value
-    var usuario = document.getElementById('usuario').value
-    if (contrasenya != user.password || user.username != usuario) {
+    useradd = document.getElementById('usuario').value
+    passadd =  document.getElementById('password').value
+    if (passadd != user.password || user.username != useradd) {
         //alert('password o usuario incorrecto')
         
         document.querySelector('#user').innerHTML = `<div class="alert alert-danger" role="alert">
@@ -59,17 +61,17 @@ const login = () => {
                 
                 username = JSON.parse(localStorage.getItem('user')).username;
                 console.log(username)
-                var log = 'Hola ' + user
+                var log = 'Hola ' + username
                 document.querySelector('#user').innerHTML = log;
                 document.querySelector('#token').innerHTML = token;
+                menuHtml()
 
             })
             .catch(err => console.log(err));
 
             /*LISTAR USUARIOS---NO FUNCIONA*/
-            fetch(`${urlApi}/user`, {
+            fetch(`${urlApi}/users`, {
                 method: 'GET',
-                Authorization: token,
                 redirect: 'follow'
             })
                 .then(response => response.text())
@@ -85,6 +87,7 @@ const logout = () => {
     
     localStorage.clear()
     document.querySelector('#token').innerHTML = 'Sesión cerrada'
+    menuHtml()
 
     /*console.log(user)
     user = {

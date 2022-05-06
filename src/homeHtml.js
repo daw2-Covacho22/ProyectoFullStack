@@ -24,3 +24,10 @@ const homeHtml = ()=>{
 const cargando = ()=> {return `<div class="spiner-border d-flex justify-content-center" roles="status">
 <span class="sr-only">Cargando...</span>
 </div>`}
+
+//Cuando hago f5 e inicio de nuevo la pagina que no me aparezca el usuario
+//aparece como si la sesión estuviese cerrada
+if(username == '' || username == null){
+    localStorage.clear()
+    console.log('hola')
+}

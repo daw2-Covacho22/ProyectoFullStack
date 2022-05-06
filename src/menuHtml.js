@@ -9,8 +9,26 @@ const menuHtml = () => {
         
     }else{
         userlog = ()=>{
+            
+            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#">
+                        ${username}
+                    </a>`
+        }
+    }
+    if(localStorage.user == '' || localStorage.user == null){
+        var logperson = ()=>{
             return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
-                        Hola ${user}
+                        Login
+                    </a>`
+        }
+    }else{
+        logperson = ()=>{
+            
+            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
+                        Hola ${username}
+                    </a>
+                    <a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="logout()">
+                        cerrar sesion
                     </a>`
         }
     }
@@ -18,6 +36,7 @@ const menuHtml = () => {
     <nav class="navbar navbar-light bg-light" aria-label="First navbar example">
                 <div class="container-fluid">
                     <a class="navbar-brand" style="color: black;" href="./index.html">¡Paco!</a>
+                    <a class="logperson">${logperson()}</a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -43,6 +62,7 @@ const menuHtml = () => {
                                 <a class="nav-link dropdown-toggle" style="color: black;" href="#" id="dropdown01"
                                     data-bs-toggle="dropdown" aria-expanded="false">Usuarios</a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                                
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -86,6 +106,13 @@ const menuHtml = () => {
             
         }
         
+    }
+    if(element.target.dataset.function == 'logout()'){
+        loginHtml();
+        logout();
+    }
+    if(element.target.dataset.function == 'loginHtml()'){
+        loginHtml()
     }
 })
 
