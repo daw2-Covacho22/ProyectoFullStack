@@ -1,6 +1,21 @@
+
 const menuHtml = () => {
-  let html = ` 
-  <nav class="navbar navbar-light bg-light" aria-label="First navbar example">
+    if(localStorage.user == '' || localStorage.user == null){
+        var userlog = ()=>{
+            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
+                        Login
+                    </a>`
+        }
+        
+    }else{
+        userlog = ()=>{
+            return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
+                        Hola ${user}
+                    </a>`
+        }
+    }
+    menuUI.innerHTML = ` 
+    <nav class="navbar navbar-light bg-light" aria-label="First navbar example">
                 <div class="container-fluid">
                     <a class="navbar-brand" style="color: black;" href="./index.html">¡Paco!</a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
@@ -37,9 +52,7 @@ const menuHtml = () => {
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
-                                    Login
-                                </a>
+                                ${userlog()}
                             </li>
                         </ul>
                         <nav class="navbar navbar-light " style="background-color:#f8f9fa">
@@ -52,11 +65,11 @@ const menuHtml = () => {
                     </div>
                 </div>
             </nav>
-  `
-  menuUI.innerHTML = html;
+  ` 
 
+    
   menuUI.addEventListener('click', (element)=>{
-      console.log(localStorage.user)
+    //console.log(localStorage.user)
     if(element.target.dataset.function == 'recetasListaHtml()'){
         recetasListaHtml();
     }
@@ -74,7 +87,7 @@ const menuHtml = () => {
         }
         
     }
-    
 })
 
 }
+

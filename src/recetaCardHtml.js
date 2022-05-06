@@ -1,22 +1,11 @@
 //pinta una receta a partir de un id
 const recetaCardHtml = (id)=>{
     //console.log(id);
-    let migaUrl = [
-        {
-            nombre:'home',
-            function: 'homeHtml()'
-        },
-        {
-            nombre:'recetas',
-            funcion:'recetasListaHtml()'
-        }
-    ]
+
     mainUI.innerHTML = 'cargando...'
     fetch(`${urlApi}/recipes/${id}`)
     .then(dato=>dato.json())
     .then(receta=>{
-        migaUrl.push({nombre:receta.title,funcion:''})
-        //console.log("migaUrl: " ,migaUrl)
         tituloPaginaHtml(`<em class="fs-5">${receta.title}</em>`)
         mainUI.innerHTML = 
         `

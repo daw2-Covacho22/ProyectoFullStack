@@ -28,11 +28,6 @@ const login = () => {
         "email": "admin@admin.com",
         "password": "$2b$10$oN1K03f5kjqa23HGei5vZ.1OjB5frIw7vw8F0KuvT1LUobUMVLLIG"
     };
-    
-
-    
-    
-    
     var contrasenya = document.getElementById('password').value
     var usuario = document.getElementById('usuario').value
     if (contrasenya != user.password || user.username != usuario) {
@@ -62,16 +57,16 @@ const login = () => {
                 localStorage.setItem('token', token);
 
                 
-                user = JSON.parse(localStorage.getItem('user')).username;
+                username = JSON.parse(localStorage.getItem('user')).username;
+                console.log(username)
                 var log = 'Hola ' + user
                 document.querySelector('#user').innerHTML = log;
                 document.querySelector('#token').innerHTML = token;
-                
-    
-
 
             })
             .catch(err => console.log(err));
+
+            /*LISTAR USUARIOS---NO FUNCIONA*/
             fetch(`${urlApi}/user`, {
                 method: 'GET',
                 Authorization: token,

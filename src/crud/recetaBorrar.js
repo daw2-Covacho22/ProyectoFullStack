@@ -1,8 +1,7 @@
 //Borrar recetas
 const recetaBorrar = (id)=>{
     // Peticion para borrar
-    const url = `http://localhost:8000/recipes/${id}`;
-    fetch(url, {
+    fetch(`${urlApi}/recipes/${id}`, {
         method: "DELETE",
         body: JSON.stringify(receta),
         headers: {
