@@ -6,7 +6,7 @@ const loginHtml = () => {
                     <div class="col-12 col-md-6 offset-md-3">
                         <div class="card">
                             <div class="card-body">
-                                <div id="user">Aquí nombre de usuario</div>
+                                <div id="user"></div>
                                 <input type="text" class="form-control m-2" id="usuario" value="admin" placeholder="admin">
                                 <input type="password" class="form-control m-2" id="password" placeholder="password" value="$2b$10$oN1K03f5kjqa23HGei5vZ.1OjB5frIw7vw8F0KuvT1LUobUMVLLIG">
                                 <button class="btn btn-primary m-2" type="submit" id="btn-login">Login</button>
@@ -22,7 +22,7 @@ const loginHtml = () => {
 
 
 
-const login = (useradd, passadd) => {
+const login = () => {
     //console.log(user)
     token = localStorage.getItem('token');
     user = {
@@ -52,15 +52,12 @@ const login = (useradd, passadd) => {
                 token = json.token;
                 refreshToken = json.refreshToken;
 
-                
-
                 //almacenamos token en nuestro ordenador
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('token', token);
 
                 
                 username = JSON.parse(localStorage.getItem('user')).username;
-                console.log(username)
                 var log = 'Hola ' + username
                 document.querySelector('#user').innerHTML = log;
                 document.querySelector('#token').innerHTML = token;
@@ -68,15 +65,6 @@ const login = (useradd, passadd) => {
 
             })
             .catch(err => console.log(err));
-
-            /*LISTAR USUARIOS---NO FUNCIONA*/
-            fetch(`${urlApi}/users`, {
-                method: 'GET',
-                redirect: 'follow'
-            })
-                .then(response => response.text())
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
     }
 
 }
