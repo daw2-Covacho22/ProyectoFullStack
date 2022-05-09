@@ -2,11 +2,11 @@
 //consulta con la API
 const recetasListaHtml = ()=>{
     
-    if(localStorage.user == '' || localStorage.user == null){
+    if(username == '' || username == null){
         var rol
     }else{
-        if(JSON.parse(localStorage.getItem('user')).username == 'admin'){
-            var rol = JSON.parse(localStorage.getItem('user')).username
+        if(username == 'admin'){
+            var rol = username
         }
     }
     if(rol=='admin'){

@@ -52,7 +52,7 @@ const menuHtml = () => {
                                     id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Recetas</a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
                                     <li><a class="dropdown-item" data-function="recetasListaHtml()">Ver recetas</a></li>
-                                    <li><a class="dropdown-item" href="#">Ver mis recetas</a></li>
+                                    <li><a class="dropdown-item" data-function="misRecetasHtml()">Ver mis recetas</a></li>
                                     <li><a class="dropdown-item" data-function="recetaCrearHtml()">Añadir receta</a></li>
                                 </ul>
                             </li>
@@ -94,7 +94,7 @@ const menuHtml = () => {
     } else if(element.target.dataset.function == 'loginHtml()'){
         loginHtml();
     }else if(element.target.dataset.function == 'recetaCrearHtml()'){
-        if(localStorage.user == '' || localStorage.user == null){
+        if(username == '' || username == null){
             alert('No tienes acceso')
         }else{
             if(username == 'admin'){
@@ -104,6 +104,13 @@ const menuHtml = () => {
     }else if(element.target.dataset.function == 'logout()'){
         loginHtml();
         logout();
+    }else if(element.target.dataset.function == 'misRecetasHtml()'){
+        if(username == '' || username == null){
+            alert('No tienes acceso')
+        }else{
+            misRecetasHtml();
+        }
+        
     }
 })
 
