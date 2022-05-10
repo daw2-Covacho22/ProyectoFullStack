@@ -74,13 +74,6 @@ const menuHtml = () => {
                                 ${userlog()}
                             </li>
                         </ul>
-                        <nav class="navbar navbar-light " style="background-color:#f8f9fa">
-                            <form class="d-flex " style="width: 100%;">
-                                <input class="form-control me-2" type="search " placeholder="Search "
-                                    aria-label="Search " style="width: 80%;">
-                                <button class="btn btn-outline-success " type="submit">Search</button>
-                            </form>
-                        </nav>
                     </div>
                 </div>
             </nav>

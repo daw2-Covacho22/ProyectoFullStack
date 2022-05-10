@@ -30,8 +30,23 @@ const recetasListaHtml = ()=>{
             <div class="row">
                 <div class="col-12 col-md-6 offset-md-3">
                     <div class="list-group">
+                    <div class="d-flex w-100 justify-content-between" style="background-color:#f8f9fa">
+                            <form class="d-flex " style="width: 100%;">
+                            <select id="opciones" class="form-select option" aria-label="Default select example">
+                                <option selected>Selecciona la opción de busqueda</option>
+                                <option value="title">Titulo</option>
+                                <option value="username">Autor</option>
+                                <option value="persons">Personas</option>
+                                <option value="time">Tiempo</option>
+                            </select>
+                                <input class="form-control me-2" id="valor" type="search " placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success buscar" type="submit">Search</button>
+                            </form>
+                    </div>
             
     `
+
     
     fetch(`${urlApi}/recipes`)
     .then(dato=>dato.json())
@@ -87,5 +102,13 @@ const recetasListaHtml = ()=>{
             }else if(elemento.target.dataset.function=='editar()'){
                 recetaEditarHtml(id)
             }
+        }else if(elemento.target.type == 'submit'){
+            console.log('enviar')
+            var opcion = document.querySelector('#opciones').value
+            var valor = document.querySelector('#valor').value
+            console.log(opcion)
+            console.log(valor)
+            busquedaRecetas(opcion, valor)
+
         }
     })

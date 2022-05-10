@@ -23,59 +23,55 @@ const loginHtml = () => {
 
 
 const login = () => {
+    useradd = document.getElementById('usuario').value 
+    passadd =  document.getElementById('password').value 
     //console.log(user)
     token = localStorage.getItem('token');
     user = {
-        "username": "admin",
+        "username": useradd,
         "email": "admin@admin.com",
-        "password": "$2b$10$oN1K03f5kjqa23HGei5vZ.1OjB5frIw7vw8F0KuvT1LUobUMVLLIG"
+        "password": passadd
     };
-    useradd = document.getElementById('usuario').value
-    passadd =  document.getElementById('password').value
-    if (passadd != user.password || user.username != useradd) {
-        //alert('password o usuario incorrecto')
-        
-        document.querySelector('#user').innerHTML = `<div class="alert alert-danger" role="alert">
-            password o usuario incorrecto
-        </div>`
-    } else {   
-        // Peticion para login
-        fetch(`${urlApi}/auth/login`, {
-                method: "POST",
-                body: JSON.stringify(user),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8",
-                }
-            })
-            .then(response => response.json())
-            .then(json => {
-                token = json.token;
-                refreshToken = json.refreshToken;
+    // Peticion para login
+    fetch(`${urlApi}/auth/login`, {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            }
+        })
+        .then(response => response.json())
+        .then(json => {
+            token = json.token;
+            refreshToken = json.refreshToken;
 
-                //almacenamos token en nuestro ordenador
-                localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('token', token);
+            //almacenamos token en nuestro ordenador
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('token', token);
 
-                
-                username = JSON.parse(localStorage.getItem('user')).username;
-                var log = 'Hola ' + username
-                document.querySelector('#user').innerHTML = log;
-                document.querySelector('#token').innerHTML = token;
-                menuHtml()
-                if(username=='admin'){
-                    userslista()
-                }
 
-            })
-            .catch(err => console.log(err));
-    }
+            username = JSON.parse(localStorage.getItem('user')).username;
+            var log = 'Hola ' + username
+            document.querySelector('#user').innerHTML = log;
+            document.querySelector('#token').innerHTML = token;
+            menuHtml()
+            if (username == 'admin') {
+                userslista()
+            }
+        })
+        .catch(err => {
+            console.log(err) 
+            document.querySelector('#user').innerHTML = `<div class="alert alert-danger" role="alert">
+                password o usuario incorrecto
+            </div>`
+        });
 
 }
 
 
 
 const logout = () => {
-    
+
     localStorage.clear()
     document.querySelector('#token').innerHTML = 'Sesión cerrada'
     menuHtml()
@@ -103,29 +99,29 @@ const logout = () => {
 }
 
 const userslista = () => {
-        //dropdown-toggle
-        
-          fetch(`${urlApi}/users`, {
+    //dropdown-toggle
+
+    fetch(`${urlApi}/users`, {
             method: 'GET',
             redirect: 'follow',
-            headers:{
+            headers: {
                 Authorization: 'Bearer ' + token
             }
-          })
-            .then(response => response.json())
-            .then(result => {
-                result.forEach(usuarios=>{
-                    console.log(usuarios.username)
-                    var usuariosLista = document.getElementById('lista_usuarios')
-                    console.log(usuariosLista)
-                    usuariosLista.innerHTML += `<li><a class="dropdown-item">${usuarios.username}</a></li>`
-                    
-                    
-                })
-                
+        })
+        .then(response => response.json())
+        .then(result => {
+            result.forEach(usuarios => {
+                console.log(usuarios.username)
+                var usuariosLista = document.getElementById('lista_usuarios')
+                console.log(usuariosLista)
+                usuariosLista.innerHTML += `<li><a class="dropdown-item">${usuarios.username}</a></li>`
+
+
             })
-            .catch(error => console.log('error', error));
-        menuHtml()
+
+        })
+        .catch(error => console.log('error', error));
+    menuHtml()
 }
 
 
