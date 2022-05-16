@@ -28,7 +28,6 @@
             <div id="tituloPaginaUI"></div>
           </div>
         </div>
-        <div id="miga"></div>
       </div>
     </div>
   </header>
@@ -37,16 +36,14 @@
 
   
   <script>
-    token = localStorage.getItem('token')
-    refreshToken = ""
-    user = ""
+    token = localStorage.getItem('token') //token almacenado
+    refreshToken = "" //refreshtoken
+    user = "" //array de usuario
     useradd = ""//usuario que pone el usuario al hacer login
     passadd = "" //password que pone el usuario al hacer login
-    password = ""
     username = "" //usuario logeado nombre
-    urlApi = "http://localhost:8000"
+    urlApi = "http://localhost:8000" //Url de la API
     const mainUI = document.querySelector('main');
-    const migaUI = document.querySelector('.miga');
     const menuUI = document.querySelector('#menu');
     const tituloPaginaUI = document.querySelector('#tituloPaginaUI');
   </script>
