@@ -1,3 +1,4 @@
+//HTML donde se hará el login
 const loginHtml = () => {
     tituloPaginaHtml('Login')
     mainUI.innerHTML =
@@ -21,55 +22,62 @@ const loginHtml = () => {
 
 
 
-
+//Hacemos el login (la api no está bien porque no autentifica así que lo haré de otra manera)
 const login = () => {
-    useradd = document.getElementById('usuario').value 
-    passadd =  document.getElementById('password').value 
     //console.log(user)
     token = localStorage.getItem('token');
     user = {
-        "username": useradd,
+        "username": "admin",
         "email": "admin@admin.com",
-        "password": passadd
+        "password": "$2b$10$oN1K03f5kjqa23HGei5vZ.1OjB5frIw7vw8F0KuvT1LUobUMVLLIG"
     };
-    // Peticion para login
-    fetch(`${urlApi}/auth/login`, {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            }
-        })
-        .then(response => response.json())
-        .then(json => {
-            token = json.token;
-            refreshToken = json.refreshToken;
+    useradd = document.getElementById('usuario').value
+    passadd =  document.getElementById('password').value
+    if (passadd != user.password || user.username != useradd) {
+        //alert('password o usuario incorrecto')
+        
+        document.querySelector('#user').innerHTML = `<div class="alert alert-danger" role="alert">
+            password o usuario incorrecto
+        </div>`
+    } else { 
+        // Peticion para login
+        fetch(`${urlApi}/auth/login`, {
+                method: "POST",
+                body: JSON.stringify(user),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                }
+            })
+            .then(response => response.json())
+            .then(json => {
+                token = json.token;
+                refreshToken = json.refreshToken;
 
-            //almacenamos token en nuestro ordenador
-            localStorage.setItem('user', JSON.stringify(user));
-            localStorage.setItem('token', token);
+                //almacenamos token en nuestro ordenador
+                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('token', token);
 
 
-            username = JSON.parse(localStorage.getItem('user')).username;
-            var log = 'Hola ' + username
-            document.querySelector('#user').innerHTML = log;
-            document.querySelector('#token').innerHTML = token;
-            menuHtml()
-            if (username == 'admin') {
-                userslista()
-            }
-        })
-        .catch(err => {
-            console.log(err) 
-            document.querySelector('#user').innerHTML = `<div class="alert alert-danger" role="alert">
-                password o usuario incorrecto
-            </div>`
-        });
-
+                username = JSON.parse(localStorage.getItem('user')).username;
+                var log = 'Hola ' + username
+                document.querySelector('#user').innerHTML = log;
+                document.querySelector('#token').innerHTML = token;
+                menuHtml()
+                if (username == 'admin') {
+                    userslista()
+                }
+            })
+            .catch(err => {
+                console.log(err) 
+                document.querySelector('#user').innerHTML = `<div class="alert alert-danger" role="alert">
+                    password o usuario incorrecto
+                </div>`
+            });
+    }
 }
 
 
-
+//En logout pasa lo mismo, no autentifica bien así que limpio el localStorage para eliminar la sesion
 const logout = () => {
 
     localStorage.clear()
@@ -98,6 +106,7 @@ const logout = () => {
     .catch(err => console.log(err));*/
 }
 
+//Funcion que recoge todos los usuarios y los lista en el menu
 const userslista = () => {
     //dropdown-toggle
 
@@ -127,10 +136,12 @@ const userslista = () => {
 
 //Eventos
 mainUI.addEventListener('click', (elemento) => {
+    //Si hacemos click en el boton login
     if (elemento.target.id == 'btn-login') {
         login()
     }
-    if (elemento.target.id == 'btn-logout') {
+    //Si hacemos click en el boton logout
+    else if (elemento.target.id == 'btn-logout') {
         logout()
     }
 });

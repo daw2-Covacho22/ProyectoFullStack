@@ -1,3 +1,4 @@
+//Recibe los datos y los modifica
 const recetaEditar = (id, username, titulo, descripcion, ingredientes, dificultad, personas, tiempo)=>{
     token = localStorage.getItem('token')
     receta = {

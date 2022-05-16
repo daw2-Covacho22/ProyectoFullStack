@@ -1,4 +1,5 @@
  //HTML de editar
+ //Recibe el id
 const recetaEditarHtml = (id)=>{
     //console.log(id)
 
@@ -91,6 +92,8 @@ const recetaEditarHtml = (id)=>{
 
  //Click en receta DE LISTA
  mainUI.addEventListener('click', (elemento)=>{
+     //Si clickamos en modificar
+    //Recogemos todos los datos y se los pasamos a la funcion editar
     if(elemento.target.dataset.function=="update()"){
         var id = document.querySelector('.card-body').dataset.id
         //console.log(id + " lo que le paso ")

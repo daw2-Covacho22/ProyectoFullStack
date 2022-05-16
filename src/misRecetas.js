@@ -70,27 +70,15 @@ const misRecetasHtml = () => {
     .catch((error)=>{console.log(error)})
 }
 
-//Listar Recetas Búsqueda y/o Paginación
-//No sé donde llamarlo
-const recetaBusqueda = () => {
-    fetch(`${urlApi}/recipes?page=0&limit=10&search_field=description&search_content=durante&search_order=desc`,{
-        method: 'GET',
-        redirect: 'follow',
-        headers:{
-            Authorization: 'Bearer ' + token
-        }
-    })
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-}
 
 
 //Click en receta DE LISTA o modificar o eliminar
 mainUI.addEventListener('click', (elemento)=>{
+    //Seleccionamos el id de la tarjeta y llamamos a la carta
     if(elemento.target.dataset.index){
         let id= elemento.target.dataset.index;
         recetaCardHtml(id);
+        //Si hacemo click en el icono de borrar o editar
     }else if(elemento.target.dataset.function){
         let id=elemento.target.parentNode.dataset.id;
         if(elemento.target.dataset.function=='borrar()'){

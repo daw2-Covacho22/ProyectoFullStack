@@ -1,7 +1,7 @@
 
-//consulta con la API
+//Lista de todas las recetas
 const recetasListaHtml = ()=>{
-    
+    //Si el usuario es admin verá los iconos de edit y delete
     if(username == '' || username == null){
         var rol
     }else{
@@ -21,7 +21,7 @@ const recetasListaHtml = ()=>{
     }
 
 
-
+    //Llamamos al titulo y le añadimos el titulo que queramos
     tituloPaginaHtml('Lista de Recetas')
     var listaHtml =
     `
@@ -92,9 +92,11 @@ const recetasListaHtml = ()=>{
 
     //Click en receta DE LISTA o modificar o eliminar
     mainUI.addEventListener('click', (elemento)=>{
+        //si el elemento tiene la misma id va a carta
         if(elemento.target.dataset.index){
             let id= elemento.target.dataset.index;
             recetaCardHtml(id);
+            //si el elemento tiene la funcion borrar o editar
         }else if(elemento.target.dataset.function){
             let id=elemento.target.parentNode.dataset.id;
             if(elemento.target.dataset.function=='borrar()'){
@@ -102,6 +104,7 @@ const recetasListaHtml = ()=>{
             }else if(elemento.target.dataset.function=='editar()'){
                 recetaEditarHtml(id)
             }
+        //Si el elemento es de tipo submit
         }else if(elemento.target.type == 'submit'){
             console.log('enviar')
             var opcion = document.querySelector('#opciones').value

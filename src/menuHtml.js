@@ -82,21 +82,25 @@ const menuHtml = () => {
     
   menuUI.addEventListener('click', (element)=>{
     //console.log(localStorage.user)
+    //Si clickamos en la opcion ver recetas
     if(element.target.dataset.function == 'recetasListaHtml()'){
         recetasListaHtml();
+        //Si clickamos en la opcion ver login
     } else if(element.target.dataset.function == 'loginHtml()'){
         loginHtml();
+        //Si clickamos en la opcion crear recetas
     }else if(element.target.dataset.function == 'recetaCrearHtml()'){
-        if(username == '' || username == null){
-            alert('No tienes acceso')
-        }else{
+        //En caso de no ser el admin no puedes crear recetas nuevas
             if(username == 'admin'){
                 recetaCrearHtml();
-            }
+            }else{
+                alert('No tienes acceso')
         }
+        //Si clickamos en la opcion ver logout
     }else if(element.target.dataset.function == 'logout()'){
         loginHtml();
         logout();
+        //Si clickamos en la opcion mis recetas
     }else if(element.target.dataset.function == 'misRecetasHtml()'){
         if(username == '' || username == null){
             alert('No tienes acceso')

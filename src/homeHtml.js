@@ -1,3 +1,4 @@
+//Funcion que muestra el inicio de la pantalla
 const homeHtml = ()=>{
     cargando()
     tituloPaginaHtml('Las recetas de <br>Paco Cinero')
@@ -13,6 +14,7 @@ const homeHtml = ()=>{
         </div>
     </div>
     `
+    //Si hacemos click en recetasListaHtml llama a la funcion
     mainUI.addEventListener('click', (element)=>{
         if(element.target.dataset.function == 'recetasListaHtml()'){
             recetasListaHtml();

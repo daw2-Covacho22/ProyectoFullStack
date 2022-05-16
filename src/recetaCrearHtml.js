@@ -1,4 +1,4 @@
-//HTML de editar
+//HTML de crear receta
 const recetaCrearHtml = ()=>{
 
 
@@ -61,7 +61,8 @@ const recetaCrearHtml = ()=>{
 
  //Click en receta DE LISTA
  mainUI.addEventListener('click', (elemento)=>{
-    
+    //Si clickamos en crear
+    //Recogemos todos los datos y se los pasamos a la funcion crear
     if(elemento.target.dataset.function=="create()"){
         //var id = document.querySelector('.card-body').dataset.id
         //console.log(id + " lo que le paso ")

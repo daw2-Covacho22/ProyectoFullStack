@@ -1,3 +1,4 @@
+//Recibe todos los datos, los añadimos en la array receta y la crea
 const recetaCrear = (username, titulo, descripcion, ingredientes, dificultad, personas, tiempo)=>{
     token = localStorage.getItem('token')
 
