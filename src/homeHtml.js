@@ -1,6 +1,5 @@
 //Funcion que muestra el inicio de la pantalla
 const homeHtml = ()=>{
-    cargando()
     tituloPaginaHtml('Las recetas de <br>Paco Cinero')
     mainUI.innerHTML = `
     <div class="container-fluid">
@@ -23,9 +22,6 @@ const homeHtml = ()=>{
     })
 }
 
-const cargando = ()=> {return `<div class="spiner-border d-flex justify-content-center" roles="status">
-<span class="sr-only">Cargando...</span>
-</div>`}
 
 //Cuando hago f5 e inicio de nuevo la pagina que no me aparezca el usuario
 //aparece como si la sesión estuviese cerrada
