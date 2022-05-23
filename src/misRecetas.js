@@ -1,5 +1,10 @@
+import { recetaCardHtml } from "./recetaCardHtml.js";
+import { recetaBorrar } from "./crud/recetaBorrar.js";
+import { recetaEditarHtml } from "./recetaEditarHtml.js";
+import { tituloPaginaHtml } from "./tituloPaginaHtml.js";
+
 //Lista de las recetas del usuario 
-const misRecetasHtml = () => {
+export const misRecetasHtml = () => {
     if(username == '' || username == null){
         var rol
     }else{

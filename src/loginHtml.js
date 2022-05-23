@@ -1,5 +1,8 @@
+import { tituloPaginaHtml } from "./tituloPaginaHtml.js";
+import { menuHtml } from "./menuHtml.js";
+
 //HTML donde se hará el login
-const loginHtml = () => {
+export const loginHtml = () => {
     tituloPaginaHtml('Login')
     mainUI.innerHTML =
         `<div class="container mb-5 general">
@@ -23,7 +26,7 @@ const loginHtml = () => {
 
 
 //Hacemos el login (la api no está bien porque no autentifica así que lo haré de otra manera)
-const login = () => {
+export const login = () => {
     //console.log(user)
     token = localStorage.getItem('token');
     user = {
@@ -78,9 +81,12 @@ const login = () => {
 
 
 //En logout pasa lo mismo, no autentifica bien así que limpio el localStorage para eliminar la sesion
-const logout = () => {
+export const logout = () => {
 
     localStorage.clear()
+    username = JSON.parse(localStorage.getItem('user'));
+    
+    
     document.querySelector('#token').innerHTML = 'Sesión cerrada'
     menuHtml()
 
@@ -107,8 +113,7 @@ const logout = () => {
 }
 
 //Funcion que recoge todos los usuarios y los lista en el menu
-const userslista = () => {
-    //dropdown-toggle
+export const userslista = () => {
 
     fetch(`${urlApi}/users`, {
             method: 'GET',
@@ -120,9 +125,7 @@ const userslista = () => {
         .then(response => response.json())
         .then(result => {
             result.forEach(usuarios => {
-                console.log(usuarios.username)
                 var usuariosLista = document.getElementById('lista_usuarios')
-                console.log(usuariosLista)
                 usuariosLista.innerHTML += `<li><a class="dropdown-item">${usuarios.username}</a></li>`
 
 

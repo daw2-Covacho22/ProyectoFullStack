@@ -1,5 +1,10 @@
+import { recetasListaHtml } from "./recetasListaHtml.js";
+import { tituloPaginaHtml } from "./tituloPaginaHtml.js";
+
+
+
 //Funcion que muestra el inicio de la pantalla
-const homeHtml = ()=>{
+export const homeHtml = ()=>{
     tituloPaginaHtml('Las recetas de <br>Paco Cinero')
     mainUI.innerHTML = `
     <div class="container-fluid">
@@ -28,3 +33,6 @@ const homeHtml = ()=>{
 if(username == '' || username == null){
     localStorage.clear()
 }
+
+
+homeHtml();

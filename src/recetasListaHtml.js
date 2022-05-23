@@ -1,6 +1,11 @@
+import { tituloPaginaHtml } from "./tituloPaginaHtml.js";
+import { recetaCardHtml } from "./recetaCardHtml.js";
+import { recetaBorrar } from "./crud/recetaBorrar.js";
+import { recetaEditarHtml } from "./recetaEditarHtml.js";
 
 //Lista de todas las recetas
-const recetasListaHtml = ()=>{
+export const recetasListaHtml = ()=>{
+    var rol = ''
     //Si el usuario es admin verá los iconos de edit y delete
     if(username == '' || username == null){
         var rol
@@ -105,13 +110,9 @@ const recetasListaHtml = ()=>{
                 recetaEditarHtml(id)
             }
         //Si el elemento es de tipo submit
-        }else if(elemento.target.type == 'submit'){
-            console.log('enviar')
+        }else if(elemento.target.className == 'buscar'){
             var opcion = document.querySelector('#opciones').value
             var valor = document.querySelector('#valor').value
-            console.log(opcion)
-            console.log(valor)
             busquedaRecetas(opcion, valor)
-
         }
     })

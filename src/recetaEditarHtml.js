@@ -1,6 +1,9 @@
+import { tituloPaginaHtml } from "./tituloPaginaHtml.js";
+import {recetaEditar} from "./crud/recetaEditar.js";
+
  //HTML de editar
  //Recibe el id
-const recetaEditarHtml = (id)=>{
+export const recetaEditarHtml = (id)=>{
     //console.log(id)
 
 
@@ -33,7 +36,6 @@ const recetaEditarHtml = (id)=>{
     .then(dato=>dato.json())
     .then(receta=>{
         //console.log(id)
-        var dificultad = `${receta.dificulty}`
         tituloPaginaHtml(`<em class="fs-5">${receta.title}</em>`)
         mainUI.innerHTML = 
         `
@@ -103,6 +105,7 @@ const recetaEditarHtml = (id)=>{
         var ingredients = document.querySelector('#e-ingredients').value
         //console.log(ingredients)
         ingredients = ingredients.split(",")
+        console.log(ingredients)
         //console.log(ingredientes)
         var dificultad = document.querySelector('#e-dificulty').value
         var personas = document.querySelector('#e-persons').value

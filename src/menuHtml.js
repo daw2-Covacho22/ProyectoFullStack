@@ -1,5 +1,9 @@
+import { recetasListaHtml } from "./recetasListaHtml.js";
+import { loginHtml, logout } from "./loginHtml.js";
+import { recetaCrearHtml } from "./recetaCrearHtml.js";
+import {misRecetasHtml} from "./misRecetas.js"
 
-const menuHtml = () => {
+export const menuHtml = () => {
     if(localStorage.user == '' || localStorage.user == null){
         var userlog = ()=>{
             return `<a class="nav-link active" style="color: black;" aria-current="page" href="#" data-function="loginHtml()">
@@ -79,7 +83,8 @@ const menuHtml = () => {
             </nav>
   ` 
 
-    
+
+
   menuUI.addEventListener('click', (element)=>{
     //console.log(localStorage.user)
     //Si clickamos en la opcion ver recetas
@@ -112,4 +117,5 @@ const menuHtml = () => {
 })
 
 }
+menuHtml();
 

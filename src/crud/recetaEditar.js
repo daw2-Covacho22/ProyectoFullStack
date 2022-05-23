@@ -1,7 +1,8 @@
+import { recetasListaHtml } from "../recetasListaHtml.js";
 //Recibe los datos y los modifica
-const recetaEditar = (id, username, titulo, descripcion, ingredientes, dificultad, personas, tiempo)=>{
+export const recetaEditar = (id, username, titulo, descripcion, ingredientes, dificultad, personas, tiempo)=>{
     token = localStorage.getItem('token')
-    receta = {
+    const receta = {
         "ingredients": ingredientes,
         "username": username,
         "title": titulo,

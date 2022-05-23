@@ -1,8 +1,8 @@
+import { tituloPaginaHtml } from "./tituloPaginaHtml.js";
+import {recetaCrear} from "./crud/recetaCrear.js";
+
 //HTML de crear receta
-const recetaCrearHtml = ()=>{
-
-
-    
+export const recetaCrearHtml = ()=>{
     mainUI.innerHTML = 'cargando...'
     tituloPaginaHtml('Crear Receta')
     

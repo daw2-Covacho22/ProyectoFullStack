@@ -1,8 +1,10 @@
+import { recetaCardHtml } from "../recetaCardHtml.js";
+
 //Recibe todos los datos, los añadimos en la array receta y la crea
-const recetaCrear = (username, titulo, descripcion, ingredientes, dificultad, personas, tiempo)=>{
+export const recetaCrear = (username, titulo, descripcion, ingredientes, dificultad, personas, tiempo)=>{
     token = localStorage.getItem('token')
 
-    receta = {
+    const receta = {
         "ingredients": ingredientes,
         "username": username,
         "title": titulo,

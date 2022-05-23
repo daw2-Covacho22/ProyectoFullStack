@@ -1,6 +1,12 @@
+import {recetaEditar} from "./crud/recetaEditar.js";
+import { recetaBorrar } from "./crud/recetaBorrar.js";
+import { tituloPaginaHtml } from "./tituloPaginaHtml.js";
+
+
 //pinta una receta a partir de un id
-const recetaCardHtml = (id)=>{
+export const recetaCardHtml = (id)=>{
     //console.log(id);
+    
 
     mainUI.innerHTML = 'cargando...'
     fetch(`${urlApi}/recipes/${id}`)

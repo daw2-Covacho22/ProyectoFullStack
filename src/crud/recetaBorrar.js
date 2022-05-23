@@ -1,5 +1,5 @@
 //Borrar recetas
-const recetaBorrar = (id)=>{
+export const recetaBorrar = (id)=>{
     // Peticion para borrar
     fetch(`${urlApi}/recipes/${id}`, {
         method: "DELETE",
