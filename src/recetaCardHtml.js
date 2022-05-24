@@ -8,7 +8,6 @@ export const recetaCardHtml = (id)=>{
     //console.log(id);
     
 
-    mainUI.innerHTML = 'cargando...'
     fetch(`${urlApi}/recipes/${id}`)
     .then(dato=>dato.json())
     .then(receta=>{

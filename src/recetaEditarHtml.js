@@ -29,7 +29,6 @@ export const recetaEditarHtml = (id)=>{
             </select> `
         }
     }*/
-    mainUI.innerHTML = 'cargando...'
     fetch(`${urlApi}/recipes/${id}`, {
         method: "GET"
     })
