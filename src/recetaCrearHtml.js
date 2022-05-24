@@ -3,7 +3,6 @@ import {recetaCrear} from "./crud/recetaCrear.js";
 
 //HTML de crear receta
 export const recetaCrearHtml = ()=>{
-    mainUI.innerHTML = 'cargando...'
     tituloPaginaHtml('Crear Receta')
     
         mainUI.innerHTML = 
